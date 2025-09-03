@@ -1,0 +1,24 @@
+"use strict";
+class BankAccount {
+    constructor() {
+        this.balance = 0;
+    }
+    deposit(amount) {
+        this.balance += amount;
+        console.log("Đã nạp:", amount);
+    }
+    withdraw(amount) {
+        if (amount <= this.balance) {
+            this.balance -= amount;
+            console.log("Đã rút:", amount);
+        }
+        else {
+            console.log("Không đủ tiền!");
+        }
+    }
+}
+const account = new BankAccount();
+account.deposit(10);
+account.withdraw(2);
+account.withdraw(9);
+console.log("Số dư:", account.balance);

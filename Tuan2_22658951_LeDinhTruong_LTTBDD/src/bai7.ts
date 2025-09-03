@@ -1,7 +1,7 @@
 function simulateTask7(id: number, time: number): Promise<string> {
     return new Promise((resolve) => {
         setTimeout(() => {
-            resolve(`Task ${id} done after ${time}ms`);
+            resolve(`Nhiệm vụ ${id} thực hiện sau ${time}ms`);
         }, time);
     });
 }
@@ -14,8 +14,8 @@ const promises = [
 
 Promise.race(promises)
     .then((result) => {
-        console.log('First task completed:', result);
+        console.log('nhiệm vụ đầu tiên đã hoàn thành:', result);
     })
     .catch((error) => {
-        console.error('Error:', error);
+        console.error('Lỗi:', error);
     });

@@ -1,4 +1,5 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 function simulateTask6(id, time) {
     return new Promise((resolve) => {
         setTimeout(() => {
@@ -18,3 +19,4 @@ Promise.all(promises)
     .catch((error) => {
     console.error('Error:', error);
 });
+//# sourceMappingURL=bai6.js.map

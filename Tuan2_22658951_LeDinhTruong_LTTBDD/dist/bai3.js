@@ -1,4 +1,5 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 function rejectAfterOneSecond() {
     return new Promise((_, reject) => {
         setTimeout(() => {
@@ -11,3 +12,4 @@ rejectAfterOneSecond()
     .catch((error) => {
     console.error(error.message);
 });
+//# sourceMappingURL=bai3.js.map

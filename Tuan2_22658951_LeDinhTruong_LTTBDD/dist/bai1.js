@@ -1,4 +1,5 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 const helloAsync = new Promise((resolve) => {
     setTimeout(() => {
         resolve("Hello Async");
@@ -7,3 +8,4 @@ const helloAsync = new Promise((resolve) => {
 helloAsync.then((message) => {
     console.log(message);
 });
+//# sourceMappingURL=bai1.js.map

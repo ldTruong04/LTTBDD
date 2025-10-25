@@ -24,9 +24,8 @@ const UNIQUE_MOCK_PRODUCTS = Array.from(
   new Map(MOCK_PRODUCTS.map(p => [p.product_id, p])).values()
 );
 
-/**
- * Lấy tất cả sản phẩm từ database
- * @returns Mảng các sản phẩm
+/** Lấy tất cả sản phẩm từ database
+ * 
  */
 export function getAllProducts(): Product[] {
   // Trên web platform, trả về mock data

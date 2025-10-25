@@ -1,6 +1,5 @@
 /**
- * File: src/db/cart.repo.ts
- * Mô tả: Các hàm truy vấn cho bảng cart_items
+ *  hàm truy vấn cho cart_items
  */
 
 import { CartItem, InvoiceItem } from '../models/types';

@@ -82,23 +82,23 @@ export default function ProductsScreen() {
     try {
       const product = await Promise.resolve(getProductById(productId));
       if (!product) {
-        Alert.alert('Lỗi', 'Không tìm thấy sản phẩm');
+        Alert.alert('Lỗi', 'Không tìm thấy');
         return;
       }
       if (product.stock <= 0) {
-        Alert.alert('Hết hàng', 'Sản phẩm này hiện đã hết hàng');
+        Alert.alert( 'Sản phẩm này hiện đã hết hàng');
         return;
       }
 
       const cartItems = await Promise.resolve(getAllCartItems());
       const existingItem = (cartItems || []).find((i) => i.product_id === productId);
       if (existingItem && existingItem.qty >= product.stock) {
-        Alert.alert('Thông báo', `Bạn đã thêm tối đa ${product.stock} sản phẩm này vào giỏ`);
+        Alert.alert('Thông báo', `Bạn đã thêm tối đa ${product.stock} sản phẩm này`);
         return;
       }
 
       await Promise.resolve(addToCart(productId, 1));
-      Alert.alert('Thành công', 'Đã thêm sản phẩm vào giỏ hàng');
+      Alert.alert('Đã thêm sản phẩm vào giỏ hàng');
       await loadProducts();
     } catch (error) {
       console.error('Error adding to cart:', error);

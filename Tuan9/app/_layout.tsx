@@ -13,20 +13,14 @@ export default function RootLayout() {
     const setup = async () => {
       // SQLite chỉ hoạt động trên mobile (Android/iOS)
       if (Platform.OS === 'web') {
-        console.warn('⚠️ SQLite không hỗ trợ web platform');
-        console.warn('📱 Vui lòng chạy trên Android hoặc iOS');
+        console.warn('SQLite không hỗ trợ web platform hãy chạy trên Android hoặc iOS');
         return;
       }
 
       try {
-        console.log('🚀 Starting database setup...');
-        
-        await initDatabase();
-        console.log('Seeding products...');
-        await seedProducts();
-        console.log('App setup completed');
+        console.log('loading database setup...');
+
       } catch (error) {
-        console.error('❌ Error during setup:', error);
         console.error('Error details:', JSON.stringify(error, null, 2));
       }
     };

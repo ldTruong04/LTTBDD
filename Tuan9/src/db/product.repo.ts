@@ -1,6 +1,5 @@
 /**
- * File: src/db/product.repo.ts
- * Mô tả: Các hàm truy vấn cho bảng products
+  Các hàm truy vấn cho bảng products
  */
 
 import { Product } from '../models/types';
@@ -9,13 +8,21 @@ import { Platform } from 'react-native';
 
 // Mock data cho web platform
 const MOCK_PRODUCTS = [
-  { product_id: 'P001', name: 'iPhone 15 Pro Max', price: 29990000, stock: 10 },
-  { product_id: 'P002', name: 'Samsung Galaxy S24', price: 22990000, stock: 15 },
-  { product_id: 'P003', name: 'MacBook Pro M3', price: 52990000, stock: 5 },
-  { product_id: 'P004', name: 'iPad Air', price: 15990000, stock: 20 },
-  { product_id: 'P005', name: 'AirPods Pro', price: 6490000, stock: 30 },
-  { product_id: 'P006', name: 'Apple Watch Series 9', price: 10990000, stock: 12 },
+  { product_id: 'P001', name: 'iPhone 17 Pro Max', price: 19990000, stock: 99 },
+  { product_id: 'P002', name: 'VinSmart', price: 15990000, stock: 30 },
+  { product_id: 'P003', name: 'AirPods Pro', price: 999000, stock: 199 },
+  { product_id: 'P004', name: 'MacBook Pro M4', price: 2990000, stock: 29 },
+  { product_id: 'P005', name: 'iPad Air M2', price: 6990000, stock: 999 },
+  { product_id: 'P006', name: 'Samsung Galaxy S27 Ultra', price: 9990000, stock: 19 },
+  { product_id: 'P008', name: 'Samsung Galaxy', price: 999000, stock: 199 },
+  { product_id: 'P007', name: 'Apple Watch ', price: 10990000, stock: 50 },
+  { product_id: 'P009', name: 'iPhone Air', price: 15990000, stock: 19 },
 ];
+
+// Create unique mock list to avoid duplicate product_id issues
+const UNIQUE_MOCK_PRODUCTS = Array.from(
+  new Map(MOCK_PRODUCTS.map(p => [p.product_id, p])).values()
+);
 
 /**
  * Lấy tất cả sản phẩm từ database
@@ -24,7 +31,7 @@ const MOCK_PRODUCTS = [
 export function getAllProducts(): Product[] {
   // Trên web platform, trả về mock data
   if (Platform.OS === 'web') {
-    return MOCK_PRODUCTS;
+    return UNIQUE_MOCK_PRODUCTS;
   }
   
   const db = openDatabase();
@@ -46,7 +53,7 @@ export function getAllProducts(): Product[] {
 export function getProductById(productId: string): Product | null {
   // Trên web platform, tìm trong mock data
   if (Platform.OS === 'web') {
-    return MOCK_PRODUCTS.find(p => p.product_id === productId) || null;
+    return UNIQUE_MOCK_PRODUCTS.find(p => p.product_id === productId) || null;
   }
   
   const db = openDatabase();

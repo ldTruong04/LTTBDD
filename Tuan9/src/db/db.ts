@@ -1,6 +1,5 @@
 /**
- * File: src/db/db.ts
- * Mô tả: Khởi tạo và quản lý kết nối SQLite database
+Khởi tạo và quản lý kết nối SQLite database
  */
 
 import * as SQLite from 'expo-sqlite';
@@ -11,14 +10,21 @@ const DB_NAME = 'shopping.db';
 
 // Mock data cho web platform
 const MOCK_PRODUCTS = [
-  { product_id: 'P001', name: 'iPhone 17 Pro Max', price: 29990000, stock: 99 },
-  { product_id: 'P002', name: 'Samsung Galaxy S25 Ultra', price: 22990000, stock: 89 },
-  { product_id: 'P003', name: 'MacBook Pro M4', price: 52990000, stock: 79 },
-  { product_id: 'P004', name: 'iPhone Air', price: 15990000, stock: 55 },
-  { product_id: 'P005', name: 'AirPods Pro', price: 6490000, stock: 90 },
-  { product_id: 'P006', name: 'Apple Watch Series 9', price: 10990000, stock: 9 },
-  { product_id: 'P007', name: 'MacBook Air M2', price: 10990000, stock: 49 },
+  { product_id: 'P001', name: 'iPhone 17 Pro Max', price: 19990000, stock: 99 },
+  { product_id: 'P002', name: 'VinSmart', price: 15990000, stock: 30 },
+  { product_id: 'P003', name: 'AirPods Pro', price: 999000, stock: 199 },
+  { product_id: 'P004', name: 'MacBook Pro M4', price: 2990000, stock: 29 },
+  { product_id: 'P005', name: 'iPad Air M2', price: 6990000, stock: 999 },
+  { product_id: 'P006', name: 'Samsung Galaxy S27 Ultra', price: 9990000, stock: 19 },
+  { product_id: 'P008', name: 'Samsung Galaxy', price: 999000, stock: 199 },
+  { product_id: 'P007', name: 'Apple Watch ', price: 10990000, stock: 50 },
+  { product_id: 'P009', name: 'iPhone Air', price: 15990000, stock: 19 },
 ];
+
+// Deduplicate mock products by product_id (giữ bản cuối cùng nếu có trùng)
+const UNIQUE_MOCK_PRODUCTS = Array.from(
+  new Map(MOCK_PRODUCTS.map(p => [p.product_id, p])).values()
+);
 
 // Mock storage cho web
 let mockCartItems: any[] = [];
@@ -100,14 +106,7 @@ export async function seedProducts() {
   
   console.log('🌱 Seeding products data...');
 
-  const products = [
-    { product_id: 'P001', name: 'iPhone 15 Pro Max', price: 29990000, stock: 10 },
-    { product_id: 'P002', name: 'Samsung Galaxy S24', price: 22990000, stock: 15 },
-    { product_id: 'P003', name: 'MacBook Pro M3', price: 52990000, stock: 5 },
-    { product_id: 'P004', name: 'iPad Air', price: 15990000, stock: 20 },
-    { product_id: 'P005', name: 'AirPods Pro', price: 6490000, stock: 30 },
-    { product_id: 'P006', name: 'Apple Watch Series 9', price: 10990000, stock: 12 },
-  ];
+  const products = UNIQUE_MOCK_PRODUCTS;
 
   for (const product of products) {
     db.runSync(

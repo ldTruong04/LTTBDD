@@ -151,6 +151,12 @@ export default function ProductsScreen() {
         <Text style={styles.productStock}>
           Còn lại: <Text style={styles.stockNumber}>{item.stock}</Text>
         </Text>
+        <TouchableOpacity
+          style={styles.detailButton}
+          //onPress={() => router.push({ pathname: '/product', params: { id: item.product_id } })}
+        >
+          <Text style={styles.detailButtonText}>Chi tiết</Text>
+        </TouchableOpacity>
       </View>
 
       <View style={styles.actions}>
@@ -159,15 +165,10 @@ export default function ProductsScreen() {
           onPress={() => handleAddToCart(item.product_id)}
           disabled={item.stock <= 0}
         >
-          <Text style={styles.addButtonText}>{item.stock > 0 ? '+ Thêm' : 'Hết hàng'}</Text>
+          <Text style={styles.addButtonText}>{item.stock > 0 ? '+ Thêm giỏ hàng' : 'Hết hàng'}</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity
-          style={styles.detailButton}
-          onPress={() => router.push({ pathname: '/product', params: { id: item.product_id } })}
-        >
-          <Text style={styles.detailButtonText}>Chi tiết</Text>
-        </TouchableOpacity>
+        
       </View>
     </View>
   );
@@ -423,9 +424,9 @@ const styles = StyleSheet.create({
   },
   productInfo: { flex: 1, marginRight: 10 },
   productName: { fontSize: 15, fontWeight: '700', color: '#0f1724' },
-  productPrice: { fontSize: 14, color: '#0ea5a4', fontWeight: '700', marginTop: 6 },
+  productPrice: { fontSize: 14, color: '#ff1616ff', fontWeight: '700', marginTop: 6 },
   productStock: { fontSize: 12, color: '#6b7280', marginTop: 4 },
-  stockNumber: { fontWeight: '700', color: '#16a34a' },
+  stockNumber: { fontWeight: '700' },
 
   actions: { justifyContent: 'center', alignItems: 'flex-end' },
   addButton: { backgroundColor: '#0ea5a4', paddingHorizontal: 14, paddingVertical: 8, borderRadius: 8 },

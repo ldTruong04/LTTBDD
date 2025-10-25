@@ -1,6 +1,5 @@
 /**
- * File: app/_layout.tsx
- * Mô tả: Layout chính cho expo-router, khởi tạo database
+Layout chính cho expo-router, khởi tạo database
  */
 
 import { useEffect } from 'react';
@@ -22,13 +21,10 @@ export default function RootLayout() {
       try {
         console.log('🚀 Starting database setup...');
         
-        // Uncomment dòng dưới nếu muốn reset database hoàn toàn
-        // await clearDatabase();
-        
         await initDatabase();
-        console.log('📦 Seeding products...');
+        console.log('Seeding products...');
         await seedProducts();
-        console.log('✅ App setup completed');
+        console.log('App setup completed');
       } catch (error) {
         console.error('❌ Error during setup:', error);
         console.error('Error details:', JSON.stringify(error, null, 2));
@@ -59,8 +55,8 @@ export default function RootLayout() {
       <Stack.Screen 
         name="invoice" 
         options={{ 
-          title: 'Hoá đơn',
-          headerStyle: { backgroundColor: '#FF9800' },
+          title: '',
+          headerStyle: { backgroundColor: '#ffcc00ff' },
           headerTintColor: '#fff',
         }} 
       />
